@@ -33,27 +33,33 @@
         обнулення - 0px;
         мінусовий відступ для карток - (-15px);
         додатній відступ для карток - 15px;
+
+    Анімація:
+        час переходу - 250ms;
+        функція розподілу часу - cubic-bezier(0.4, 0, 0.2, 1);
 */
 
 :root {
-    /* Кольори */
+    /* Кольори тексту */
     --primary-text-cl: #757575;
     --title-text-cl: #212121;
     --third-text-cl: rgba(255, 255, 255, 0.6);
     --fourth-text-cl: #FFFFFF;
     --logo-text-cl: #000000;
 
+    /* Кольори фону */
     --accent-cl: #2196F3;
 
     --main-background-cl: #2F303A;
     --section-background-cl: #F5F4FA; 
+    --background-icon-footer: rgba(255, 255, 255, 0.1);
 
+    /* Кольори кнопок, карток та інших деталей */
     --btn-hover-cl: #188CE8;
  
     --cards-border-cl: #EEEEEE;
 
     --icon-cl: #AFB1B8;
-    --background-icon-footer: rgba(255, 255, 255, 0.1);
 
     /* Тіні */
     --shadows-one: rgba(0, 0, 0, 0.2);
@@ -70,6 +76,11 @@
     --zeroing-indents: 0px;
     --negative-card-indent: -15px;
     --positive-card-indent: 15px;
+
+    /* Анімація */
+    --time-animation: 250ms;
+    --time-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 body {
@@ -154,6 +165,8 @@ ul {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color var(--time-animation) var(--time-function);
 }
 
 .navigation-list .link:hover,
@@ -207,6 +220,8 @@ ul {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color var(--time-animation) var(--time-function);
 }
 
 .contact-list-style .link:hover,
@@ -276,6 +291,8 @@ ul {
     letter-spacing: 0.06em;
 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+    transition: background-color var(--time-animation) var(--time-function);
 }
 .hero-btn:hover {
     background-color: var(--btn-hover-cl);
@@ -480,6 +497,9 @@ ul {
     border-radius: 50%;
 
     color: var(--icon-cl);
+
+    transition: background-color var(--time-animation) var(--time-function),
+                color var(--time-animation) var(--time-function);
 }
 
 .social-list .link:hover,
@@ -528,6 +548,9 @@ ul {
     border-radius: 4px;
 
     color: var(--icon-cl);
+
+    transition: border-color var(--time-animation) var(--time-function),
+                color var(--time-animation) var(--time-function);
 }
 
 .customers-list .link:hover,
@@ -578,6 +601,8 @@ ul {
     font-size: 14px;
     line-height: 1.71;
     letter-spacing: 0.03em;
+
+    transition: color var(--time-animation) var(--time-function);
 }
 .address-link:hover {
     color: var(--accent-cl);
@@ -623,19 +648,26 @@ ul {
     height: 100%;
 
     background-color: var(--shadows-one);
+
+    opacity: 1;
+    transition: opacity var(--time-animation) var(--time-function);
 }
 
-.is-hidden {
+.backdrop.is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
 
     min-width: 528px;
     min-height: 521px;
@@ -646,6 +678,8 @@ ul {
     box-shadow: 0 2px 1px var(--shadows-one),
                 0 1px 1px var(--shadows-two),
                 0 1px 3px var(--shadows-three);
+
+    transition: transform var(--time-animation) var(--time-function);
 }
 
 .btn-exit {
@@ -666,6 +700,12 @@ ul {
     box-shadow: 0 2px 1px var(--shadows-one),
                 0 1px 1px var(--shadows-two),
                 0 1px 3px var(--shadows-three);
+
+    transition: fill var(--time-animation) var(--time-function);
+}
+
+.btn-exit:hover {
+    fill: var(--accent-cl);
 }
 
 /* Cторінка portfolio.html */
@@ -700,6 +740,10 @@ ul {
     line-height: 1.62;
     text-align: center;
     letter-spacing: 0.03em;
+
+    transition: color var(--time-animation) var(--time-function),
+                background-color var(--time-animation) var(--time-function),
+                box-shadow var(--time-animation) var(--time-function);
 }
 .filters-btn:hover,
 .filters-btn:focus {
@@ -741,6 +785,8 @@ ul {
 
 .cards-list .card-link {
     display: block;
+
+    transition: box-shadow var(--time-animation) var(--time-function);
 }
 
 .cards-list .card-link:hover,
@@ -754,12 +800,14 @@ ul {
 
 .cards-list .thumb {
     position: relative;
+    overflow: hidden;
 }
 
 .card-description {
     position: absolute;
     top: 0;
     left: 0;
+    transform: translateY(101%);
 
     padding-top: 63px;
     padding-right: 24px;
@@ -768,6 +816,12 @@ ul {
 
     background-color: var(--accent-cl);
     opacity: 0.9;
+
+    transition: transform var(--time-animation) var(--time-function);
+}
+
+.card-link:hover .card-description {
+    transform: translateY(0);
 }
 
 .description {
