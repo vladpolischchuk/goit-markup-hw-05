@@ -650,7 +650,8 @@ ul {
     background-color: var(--shadows-one);
 
     opacity: 1;
-    transition: opacity var(--time-animation) var(--time-function);
+    transition: opacity var(--time-animation) var(--time-function),
+                visibility var(--time-animation) var(--time-function);
 }
 
 .backdrop.is-hidden {
